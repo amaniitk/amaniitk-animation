@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game of Thrones Animation</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #000; /* Black background for a GoT theme */
+    }
+    .snowflake {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: white;
+      border-radius: 50%;
+      animation: fall 10s linear infinite;
+    }
+    @keyframes fall {
+      0% {
+        top: -10px;
+        left: calc(100% * var(--x));
+        transform: translateY(0) scale(0.5);
+      }
+      100% {
+        top: 100%;
+        left: calc(100% * var(--x));
+        transform: translateY(100vh) scale(1);
+      }
+    }
+    .dragon {
+      position: absolute;
+      width: 200px;
+      animation: fly 8s linear infinite;
+    }
+    @keyframes fly {
+      0% {
+        left: -200px;
+        top: 20%;
+        transform: scale(0.8) rotate(-5deg);
+      }
+      50% {
+        left: 50%;
+        top: 10%;
+        transform: scale(1.2) rotate(5deg);
+      }
+      100% {
+        left: 110%;
+        top: 30%;
+        transform: scale(1) rotate(0deg);
+      }
+    }
+    h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Times New Roman', serif;
+      color: white;
+      font-size: 3rem;
+      animation: fadeIn 5s infinite alternate;
+    }
+    @keyframes fadeIn {
+      0% {
+        opacity: 0.3;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Game of Thrones Title -->
+  <h1>Winter is Coming</h1>
+
+  <!-- Flying Dragon -->
+  <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Dragon_-_fire_breathing.png" alt="Flying Dragon" class="dragon">
+
+  <script>
+    // Generate snowflakes
+    for (let i = 0; i < 100; i++) {
+      const snowflake = document.createElement('div');
+      snowflake.className = 'snowflake';
+      snowflake.style.setProperty('--x', Math.random());
+      document.body.appendChild(snowflake);
+    }
+  </script>
+</body>
+</html>
